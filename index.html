@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.facebook.com; media-src 'self' blob:; connect-src 'self' https://viacep.com.br https://www.facebook.com https://connect.facebook.net https://graph.facebook.com; font-src 'self' data:; object-src 'none'; base-uri 'self'; frame-src 'none'; worker-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://connect.facebook.net; style-src 'self'; img-src 'self' data: https://www.facebook.com; media-src 'self' blob:; connect-src 'self' https://viacep.com.br https://www.facebook.com https://connect.facebook.net https://graph.facebook.com; font-src 'self' data:; object-src 'none'; base-uri 'self'; frame-src 'none'; worker-src 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
@@ -15,11 +15,13 @@
   <meta name="theme-color" content="#ee4d2d">
 
   <title>Kit 104 SemiJoias Folheada Ouro 18k Prata 925 | Shopee</title>
-  <link rel="stylesheet" href="assets/app.10fe71fe8b.css">
+  
 
   <!-- Meta Pixel Code -->
   <!-- End Meta Pixel Code -->
 
+
+  <link rel="stylesheet" href="assets/app.2c91990685.css">
 </head>
 <body>
 
@@ -53,6 +55,8 @@
         </div>
         <div class="thumbs" id="thumbs">
           <div class="thumb video-thumb active" data-type="video" data-src="assets/product-video.mp4"><img src="assets/product-video-poster.jpg" alt="Prévia do vídeo"></div>
+          <div class="thumb" data-type="image" data-src="assets/opcao-maleta.png"><img src="assets/opcao-maleta.png" alt="Kit com maleta"></div>
+          <div class="thumb" data-type="image" data-src="assets/opcao-sem-maleta.png"><img src="assets/opcao-sem-maleta.png" alt="Kit sem maleta"></div>
           <div class="thumb" data-type="image" data-src="assets/kit-principal.png"><img src="assets/kit-principal.png" alt=""></div>
           <div class="thumb" data-type="image" data-src="assets/joias-1.png"><img src="assets/joias-1.png" alt=""></div>
           <div class="thumb" data-type="image" data-src="assets/joias-2.png"><img src="assets/joias-2.png" alt=""></div>
@@ -69,7 +73,27 @@
         <div class="row"><div class="label">Cupons da Loja</div><div><span class="coupon">10% OFF</span><span class="coupon">R$5 OFF</span></div></div>
         <div class="row"><div class="label">Moedas</div><div class="value"><span class="coin">●</span> Compre e ganhe 57 moedas Shopee</div></div>
         <div class="row"><div class="label">Frete</div><div class="value"><div class="ship" id="freteHeadline" style="color:#fff;font-weight:400">Calcule o frete para sua região</div><div class="cep-wrap"><input id="cep" class="cep-input" inputmode="numeric" autocomplete="postal-code" maxlength="9" placeholder="Digite seu CEP"><button id="calcCep" class="cep-btn" type="button">Calcular</button></div><div id="cepStatus" class="cep-status">Informe seu CEP para verificar a entrega.</div><div class="freight-line">Taxa de Frete <span id="freteOriginal" class="frete-original" hidden></span><strong id="freteValor">—</strong></div></div></div>
-        <div class="row"><div class="label">Quantidade</div><div class="quantity"><button id="minus" type="button" aria-label="Diminuir quantidade">−</button><input id="qty" value="1" readonly aria-label="Quantidade"><button id="plus" type="button" aria-label="Aumentar quantidade">+</button><span style="margin-left:12px;color:#aaa">1046 peças disponíveis</span></div></div>
+        
+        <div class="row">
+          <div class="label">Opção</div>
+          <div class="variant-options" id="variantOptions">
+            <button class="variant-option" id="optionComMaleta" type="button" data-variant="com-maleta" aria-pressed="false">
+              <img src="assets/opcao-maleta.png" alt="Com maleta">
+              <span class="variant-text">
+                <span class="variant-name">Com maleta</span>
+                <span class="variant-sub">Kit com maleta</span>
+              </span>
+            </button>
+            <button class="variant-option" id="optionSemMaleta" type="button" data-variant="sem-maleta" aria-pressed="false">
+              <img src="assets/opcao-sem-maleta.png" alt="Sem maleta">
+              <span class="variant-text">
+                <span class="variant-name">Sem maleta</span>
+                <span class="variant-sub">Joias soltas</span>
+              </span>
+            </button>
+          </div>
+        </div>
+<div class="row"><div class="label">Quantidade</div><div class="quantity"><button id="minus" type="button" aria-label="Diminuir quantidade">−</button><input id="qty" value="1" readonly aria-label="Quantidade"><button id="plus" type="button" aria-label="Aumentar quantidade">+</button><span style="margin-left:12px;color:#aaa">1046 peças disponíveis</span></div></div>
         <div class="buybuttons"><button class="add" id="addToCart"><img class="add-cart-icon" src="assets/cart-add.png" alt="">Adicionar ao Carrinho</button><button class="buy" id="buyNow" type="button">Comprar Agora<br><small id="buyPrice">R$57,98</small></button></div>
       </div>
     </section>
@@ -272,9 +296,10 @@
           <div class="checkout-card-title">Produtos pedidos</div>
           <div class="checkout-shop-line">BRBBJoias</div>
           <div class="checkout-product-row">
-            <img class="checkout-product-img" src="assets/kit-principal.png" alt="Kit de semijoias">
+            <img class="checkout-product-img" id="coProductImage" src="assets/opcao-sem-maleta.png" alt="Kit de semijoias">
             <div>
-              <div class="checkout-product-name">Kit 104 SemiJoias Completo Folheada Ouro 18k Prata 925 Colar/Brincos Refinados Revenda</div>
+              <div class="checkout-product-name" id="coProductName">Kit 104 SemiJoias Completo Folheada Ouro 18k Prata 925 Colar/Brincos Refinados Revenda</div>
+              <div class="checkout-muted" id="coVariantText">Opção: Sem maleta</div>
               <div class="checkout-muted" id="coQtyText">Quantidade: 1</div>
             </div>
             <div class="checkout-price-col"><strong id="coItemSubtotal">R$57,98</strong><span>com cupom</span></div>
@@ -285,7 +310,7 @@
               <span>Cupom da Loja</span>
             </div>
             <div class="checkout-coupon-right">
-              <span class="checkout-coupon-badge">12% OFF</span>
+              <span class="checkout-coupon-badge" id="coCouponBadge">12% OFF</span>
               <span class="checkout-coupon-applied">Cupom aplicado</span>
             </div>
           </div>
@@ -327,6 +352,6 @@
       <div class="review-viewer-count" id="reviewViewerCount">1 / 1</div>
     </div>
   </div>
-  <script src="assets/app.7d0a06ccb3.js" defer></script>
+  <script src="assets/app.54d2724ae7.js" defer></script>
 </body>
 </html>
